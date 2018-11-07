@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="CPSscan">
+</Property><Property Name="解决方案文件" Value="D:\App source\C# Project\CPSscan\CPSscan.sln">
+</Property><Property Name="用户选项文件" Value="D:\App source\C# Project\CPSscan\CPSscan.suo">
+</Property><Property Name="Date" Value="2018年11月7日">
+</Property><Property Name="Time" Value="17:21">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="CPSscan.sln" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan.sln">
+</Event><Event ErrorLevel="0" Project="" Source="CPSscan.suo" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan.suo">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\CPSscan.csproj" Description="项目文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\CPSscan.csproj">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\About.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\About.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\About.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\About.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\BCScan.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\BCScan.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\BCScan.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\BCScan.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\Common\BCPrint.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\Common\BCPrint.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\Common\ComboboxItem.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\Common\ComboboxItem.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\Common\LocalIP.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\Common\LocalIP.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\ContainerNumSet.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\ContainerNumSet.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\ContainerNumSet.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\ContainerNumSet.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\FormsVar.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\FormsVar.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\InStore.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\InStore.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\InStore.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\InStore.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\Login.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\Login.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\Login.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\Login.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\MainFm.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\MainFm.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\MainFm.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\MainFm.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\ModifyRepository.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\ModifyRepository.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\ModifyRepository.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\ModifyRepository.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\PauseReason.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\PauseReason.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\PauseReason.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\PauseReason.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\Program.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\Program.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\Properties\AssemblyInfo.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\Properties\Resources.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\Properties\Settings.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\QueryStored.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\QueryStored.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\QueryStored.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\QueryStored.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\RepeatPrtOuterBC.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\RepeatPrtOuterBC.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\RepeatPrtOuterBC.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\RepeatPrtOuterBC.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\ResetPwd.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\ResetPwd.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\ResetPwd.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\ResetPwd.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\WOBCPrint.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\WOBCPrint.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\WOBCPrint.Designer.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\WOBCPrint.Designer.cs">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\App.config" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\App.config">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\Properties\Settings.settings" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\boxes_modules_128px_11929_easyicon.net.ico" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\boxes_modules_128px_11929_easyicon.net.ico">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\About.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\About.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\BCScan.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\BCScan.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\ContainerNumSet.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\ContainerNumSet.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\InStore.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\InStore.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\Login.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\Login.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\MainFm.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\MainFm.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\ModifyRepository.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\ModifyRepository.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\PauseReason.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\PauseReason.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\Properties\Resources.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\QueryStored.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\QueryStored.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\RepeatPrtOuterBC.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\RepeatPrtOuterBC.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\ResetPwd.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\ResetPwd.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\WOBCPrint.resx" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\CPSscan\WOBCPrint.resx">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\CPSscan.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="CPSscan" Source="CPSscan\CPSscan.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\BLL.csproj" Description="项目文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\BLL.csproj">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\BCScanned.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\BCScanned.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\ContainerNumSet.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\ContainerNumSet.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\DepartmentID.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\DepartmentID.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\InStore.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\InStore.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\LoginInfo.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\LoginInfo.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\MenuPermission.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\MenuPermission.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\OuterBarCode.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\OuterBarCode.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\Properties\AssemblyInfo.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\TimeSegment.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\TimeSegment.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\UnfinishedBox.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\UnfinishedBox.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\User.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\User.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\WorkOrderBC.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\BLL\WorkOrderBC.cs">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\BLL.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="BLL" Source="BLL\BLL.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\DAL.csproj" Description="项目文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DAL\DAL.csproj">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\BCScanned.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DAL\BCScanned.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\ContainerNumSet.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DAL\ContainerNumSet.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\DepartmentID.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DAL\DepartmentID.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\InStore.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DAL\InStore.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\LoginInfo.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DAL\LoginInfo.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\OuterBarCode.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DAL\OuterBarCode.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\Properties\AssemblyInfo.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DAL\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\TimeSegment.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DAL\TimeSegment.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\UnfinishedBox.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DAL\UnfinishedBox.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\User.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DAL\User.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\WorkOrderBC.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DAL\WorkOrderBC.cs">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\DAL.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="DAL" Source="DAL\DAL.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DBUtility" Source="DBUtility\DBUtility.csproj" Description="项目文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DBUtility\DBUtility.csproj">
+</Event><Event ErrorLevel="0" Project="DBUtility" Source="DBUtility\Properties\AssemblyInfo.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DBUtility\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="DBUtility" Source="DBUtility\SQLHelper.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\DBUtility\SQLHelper.cs">
+</Event><Event ErrorLevel="0" Project="DBUtility" Source="DBUtility\DBUtility.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="DBUtility" Source="DBUtility\DBUtility.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\Model.csproj" Description="项目文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Model\Model.csproj">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\BCScanned.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Model\BCScanned.cs">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\DepartmentID.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Model\DepartmentID.cs">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\InStore.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Model\InStore.cs">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\LoginInfo.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Model\LoginInfo.cs">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\MenuPermission.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Model\MenuPermission.cs">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\OuterBarCode.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Model\OuterBarCode.cs">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\Properties\AssemblyInfo.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Model\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\TimeSegment.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Model\TimeSegment.cs">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\UnfinishedBox.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Model\UnfinishedBox.cs">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\User.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Model\User.cs">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\WorkOrderBC.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Model\WorkOrderBC.cs">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\Model.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="Model" Source="Model\Model.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Common" Source="Common\Common.csproj" Description="项目文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Common\Common.csproj">
+</Event><Event ErrorLevel="0" Project="Common" Source="Common\Auxiliary.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Common\Auxiliary.cs">
+</Event><Event ErrorLevel="0" Project="Common" Source="Common\Properties\AssemblyInfo.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\Common\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Common" Source="Common\Common.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="Common" Source="Common\Common.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="LinqToSqlDAL" Source="LinqToSqlDAL\LinqToSqlDAL.csproj" Description="项目文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\LinqToSqlDAL\LinqToSqlDAL.csproj">
+</Event><Event ErrorLevel="0" Project="LinqToSqlDAL" Source="LinqToSqlDAL\LinqDataContext.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\LinqToSqlDAL\LinqDataContext.cs">
+</Event><Event ErrorLevel="0" Project="LinqToSqlDAL" Source="LinqToSqlDAL\MenuPermission.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\LinqToSqlDAL\MenuPermission.cs">
+</Event><Event ErrorLevel="0" Project="LinqToSqlDAL" Source="LinqToSqlDAL\Properties\AssemblyInfo.cs" Description="文件已成功备份为 D:\App source\C# Project\CPSscan_Backup\Backup\LinqToSqlDAL\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="LinqToSqlDAL" Source="LinqToSqlDAL\LinqToSqlDAL.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="LinqToSqlDAL" Source="LinqToSqlDAL\LinqToSqlDAL.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="CPSscan.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="CPSscan.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CPSscan" Source="CPSscan\CPSscan.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="BLL" Source="BLL\BLL.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="DAL" Source="DAL\DAL.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="DBUtility" Source="DBUtility\DBUtility.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="Model" Source="Model\Model.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="Common" Source="Common\Common.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="LinqToSqlDAL" Source="LinqToSqlDAL\LinqToSqlDAL.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event></UpgradeLog>
