@@ -36,6 +36,24 @@ namespace DAL
 
         }
 
+        public string GetRepositoryName(string repositoryID)
+        {
+            DataSet ds = GetRepository();
+            string repositoryid="", repositoryname="";
+            //循環DS的行,將數據加入到comboBox
+            for (int ds_row = 0; ds_row < ds.Tables[0].Rows.Count; ds_row++)
+            {
+                repositoryid = ds.Tables[0].Rows[ds_row]["SECONDARY_INVENTORY_NAME"].ToString().Trim();     //倉庫ID
+                if (repositoryID.Equals(repositoryid))
+                {
+                    repositoryname =
+                        repositoryid + "   " + ds.Tables[0].Rows[ds_row]["DESCRIPTION"].ToString().Trim();      //倉庫名稱
+                    break;
+                }
+            }
+            return repositoryname;
+        }
+
         /// <summary>
         /// 調用一個SP,根據條碼進行入庫
         /// </summary>

@@ -18,6 +18,11 @@ namespace BLL
             return dal.GetRepository();
         }
 
+        public string GetRepositoryName(string repositoryID)
+        {
+            return dal.GetRepositoryName(repositoryID);
+        }
+
         /// <summary>
         /// 調用一個SP,根據條碼進行入庫
         /// </summary>

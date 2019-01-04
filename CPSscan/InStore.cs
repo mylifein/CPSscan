@@ -24,7 +24,7 @@ namespace CPSscan
             this.ClearContent();
 
             //加載所有倉庫
-            this.GetRepository();
+            //this.GetRepository();
         }
 
         private void ClearContent()
@@ -54,10 +54,6 @@ namespace CPSscan
 
             DataSet ds = bll.GetRepository();
 
-            this.comboBox1.Items.Clear();                //清空comboBox1控件中的所有項,否則會累加項目，越來越多.
-            this.comboBox1.Text = "";
-
-
             string repositoryid, repositoryname;
 
             if ((ds != null) && (ds.Tables.Count > 0))
@@ -70,12 +66,23 @@ namespace CPSscan
                     repositoryid = ds.Tables[0].Rows[ds_row]["SECONDARY_INVENTORY_NAME"].ToString().Trim();                   //倉庫ID
                     repositoryname =
                         repositoryid + "   " + ds.Tables[0].Rows[ds_row]["DESCRIPTION"].ToString().Trim();      //倉庫名稱
-                    this.comboBox1.Items.Add(new ComboboxItem(repositoryname, repositoryid));
                 }
             }
 
             
             bll = null;
+
+        }
+
+        private string GetRepositoryName(string repositoryID)
+        {
+            //加載Oracle DB中的所有倉庫
+
+            BLL.InStore bll = new BLL.InStore();
+
+            string repositoryname = bll.GetRepositoryName(repositoryID);
+
+            return repositoryname;
 
         }
 
@@ -200,14 +207,14 @@ namespace CPSscan
                 }
 
 
-
+                /*
                 //判斷必要的信息是否合法
                 if (!this.CheckInfo())
                 {
                     this.textBox1.Text = "";
                     return;
                 }
-
+                */
 
 
                 //判斷工單是否已完工
@@ -274,13 +281,12 @@ namespace CPSscan
         {
             //先判斷倉別是否一致
             //得到用戶選擇的倉別
-            string selectRepositoryid =
-                (this.comboBox1.SelectedItem as ComboboxItem).Value.ToString().Trim(); 
+            //string selectRepositoryid = (this.comboBox1.SelectedItem as ComboboxItem).Value.ToString().Trim(); 
 
             //得到條碼貼紙上的倉別
             string bcRepositoryid = this.label30.Text.Trim();
 
-
+            /*
             if (!selectRepositoryid.Equals(bcRepositoryid))
             {
                 //倉別不一致,不允許入庫
@@ -293,7 +299,7 @@ namespace CPSscan
                     MessageBoxIcon.Exclamation);
                 return;
             }
-
+            */
 
 
 
@@ -303,10 +309,8 @@ namespace CPSscan
 
             model.BarCode = barcode.Trim();
             model.NowScannedWorkNo = FormsVar.login.loginedid.Trim();
-            model.RepositoryID =
-                (this.comboBox1.SelectedItem as ComboboxItem).Value.ToString().Trim();
-            model.RepositoryName =
-                (this.comboBox1.SelectedItem as ComboboxItem).Text.ToString().Trim();
+            model.RepositoryID = bcRepositoryid;
+            model.RepositoryName = this.GetRepositoryName(bcRepositoryid);
 
 
             int mark;     //此變量用於判斷入庫是否成功,因為成功后要取結果集,不成功后不取結果集
@@ -460,6 +464,7 @@ namespace CPSscan
 
         }
 
+        /*
         public bool CheckInfo()
         {
             #region 檢查必要的信息是否合法
@@ -477,6 +482,7 @@ namespace CPSscan
             }
             #endregion
         }
+         */ 
 
         public bool CheckInput()                                          //判斷兩次按鍵間的時間間隔,從而判斷是掃描槍輸入還是鍵盤輸入
         {

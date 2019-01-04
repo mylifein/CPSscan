@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -66,36 +64,11 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownHeight = 400;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.DropDownWidth = 283;
-            this.comboBox1.Font = new System.Drawing.Font("PMingLiU", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.IntegralHeight = false;
-            this.comboBox1.Location = new System.Drawing.Point(49, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(283, 21);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.Enter += new System.EventHandler(this.comboBox1_Enter);
-            this.comboBox1.Leave += new System.EventHandler(this.comboBox1_Leave);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("PMingLiU", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(10, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "倉別";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("PMingLiU", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(10, 48);
+            this.label2.Location = new System.Drawing.Point(11, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 2;
@@ -105,7 +78,7 @@
             // 
             this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBox1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(49, 44);
+            this.textBox1.Location = new System.Drawing.Point(50, 12);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(283, 23);
             this.textBox1.TabIndex = 3;
@@ -338,7 +311,7 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Font = new System.Drawing.Font("PMingLiU", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 88);
+            this.groupBox1.Location = new System.Drawing.Point(14, 67);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(623, 203);
             this.groupBox1.TabIndex = 26;
@@ -418,7 +391,7 @@
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Font = new System.Drawing.Font("PMingLiU", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.groupBox2.Location = new System.Drawing.Point(13, 308);
+            this.groupBox2.Location = new System.Drawing.Point(14, 295);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(623, 94);
             this.groupBox2.TabIndex = 27;
@@ -453,8 +426,6 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(656, 443);
             this.Name = "InStore";
@@ -471,8 +442,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
