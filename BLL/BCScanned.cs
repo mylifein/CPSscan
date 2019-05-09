@@ -26,6 +26,16 @@ namespace BLL
         }
 
         /// <summary>
+        /// 通過工單,課別ID,料號得到與最後一條記錄的時間差
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public long getScanTimeDiff(Model.BCScanned model)
+        {
+            return dal.getScanTimeDiff(model);
+        }
+
+        /// <summary>
         /// 通過工單,課別ID,線別ID,工號得到最后一條記錄的每箱數量
         /// </summary>
         public string GetLastAmountPerBox(Model.BCScanned model)
@@ -36,7 +46,7 @@ namespace BLL
         /// <summary>
         /// 通過工單查詢已掃描了多少
         /// </summary>        
-        public long FinishedAmount(string workorder)
+        public int FinishedAmount(string workorder)
         {
             return dal.FinishedAmount(workorder);
         }
@@ -51,5 +61,7 @@ namespace BLL
             return dal.FinishedAmount(workorder,workno);
         }
         */
+
+       
     }
 }

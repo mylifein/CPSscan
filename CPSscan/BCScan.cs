@@ -49,6 +49,20 @@ namespace CPSscan
 
                 if ((myds != null) && (myds.Tables.Count == 2) && (myds.Tables[0].Rows.Count > 0))
                 {
+                    string status = (myds.Tables[0].Rows[0]["STATUS_TYPE"] == DBNull.Value ? "" :
+                        myds.Tables[0].Rows[0]["STATUS_TYPE"].ToString().Trim());
+                    string statusDescription = (myds.Tables[0].Rows[0]["STATUS_TYPE_DISP"] == DBNull.Value ? "" :
+                        myds.Tables[0].Rows[0]["STATUS_TYPE_DISP"].ToString().Trim());
+                    //判断工单状态
+                    if (!status.Equals("3"))
+                    {
+                        string message = "工單狀態為  '" + statusDescription + "'  請聯係現場物料員或生管處理";
+                        MessageBox.Show(message, "提示",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.textBox2.Text = "";
+                        this.textBox2.Focus();
+                        return;
+                    }
                     string model = (myds.Tables[0].Rows[0]["SEGMENT1"] == DBNull.Value ? "" :
                         myds.Tables[0].Rows[0]["SEGMENT1"].ToString().Trim());
 
@@ -87,6 +101,19 @@ namespace CPSscan
 
 
                     this.textBox1.Text = bll.getContainerNum(model, department);
+                    //如果沒有抓到容器數量，則立即設置數量，并輸出到textBox1
+                    if (this.textBox1.Text == "0")
+                    {
+                        if (MessageBox.Show("該料號未設置容器數量，請先設置數量", "信息", MessageBoxButtons.OK, MessageBoxIcon.Exclamation) == DialogResult.OK)
+                        {
+                            ContainerNumSet containerNumSet = new ContainerNumSet(model, department);
+                            DialogResult dialogResult = containerNumSet.ShowDialog();
+                            if (dialogResult == DialogResult.OK)
+                            {
+                                this.textBox1.Text = containerNumSet.num;
+                            }
+                        }
+                    }
 
                     //帶出已掃描數量和剩餘量
                     //this.ShowInformation();   //現在不用帶出這個信息了
@@ -102,6 +129,7 @@ namespace CPSscan
 
                     //設置預設倉庫                                                        
                     this.SetDefaultRepository(repositoryID);
+
 
                 }
                 else
@@ -232,36 +260,7 @@ namespace CPSscan
 
         private void textBox1_Leave(object sender, EventArgs e)
         {
-            FormsVar.mainfm.statusStrip1.Items[0].Text = "";
 
-            if (!this.JudgetAmountPerBox())      //判斷每箱數量是否合法
-            {
-                return;
-            }
-
-
-
-            //當項次不為空串時,表示當前箱未掃描完成,這時如果用戶改變每箱數量,只允許數量是大於或等於 項次+1 , 不能小於 項次+1 .
-            if (this.label16.Text.Trim() != "")
-            {
-                //當前箱未掃描完成時
-                //如果每箱數量<項次+1時,報錯,帶出最后一次掃描時的每箱數量
-                int amountPerBox = Convert.ToInt32(this.textBox1.Text.Trim());        //每箱數量
-                int itemDoneAdd1 = Convert.ToInt32(this.label16.Text.Trim()) + 1;     //已掃描的項次數+1
-                if (amountPerBox < itemDoneAdd1)
-                {
-                    MessageBox.Show("每箱數量設置錯誤,因為已經掃描了" + this.label16.Text.Trim() +
-                    "個,故數量不能設置為小於" + itemDoneAdd1.ToString().Trim(), "提示",
-                       MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    this.textBox1.Text = "";
-                    //帶出此工單此工號最后一次掃描時每箱數量到此文本框中
-                    this.SetLastAmountPerBox();
-                }
-
-            }
-
-            //如果當前箱掃描完成后可由用戶更改每箱數量
         }
 
 
@@ -293,6 +292,20 @@ namespace CPSscan
             else
             {
                 return false;
+            }
+        }
+
+        private bool isContinuousScan(Model.BCScanned model)
+        {
+            BLL.BCScanned bll = new BLL.BCScanned();
+            long timediff = bll.getScanTimeDiff(model);
+            if (timediff < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 
@@ -342,19 +355,20 @@ namespace CPSscan
                     return;
                 }
 
+                
+
 
 
                 //判斷工單是否已掃描完工
-                /*   現在改為不需要判斷是否已掃描完成,因為可以多掃描
                 if (!this.JudgeWOComplete())
                 {
                     this.textBox8.Text = "";
                     this.textBox8.Focus();
                     return;
                 }
-                */
 
-
+                //得到批量掃描信息
+                bool IsBatchScan = this.checkBox1.Checked;
 
                 //得到信息
                 Model.BCScanned model = new Model.BCScanned();
@@ -374,10 +388,19 @@ namespace CPSscan
                     (this.comboBox2.SelectedItem as ComboboxItem).Value.ToString().Trim();              //倉別ID
                 model.Attribute7 = this.textBox10.Text.Trim();                                          //模號
                 model.NDescription = this.textBox11.Text.Trim();                                        //品名
+                model.IsBatchScan = IsBatchScan.ToString();
 
+                //判斷是否連續掃描
+                if (!this.isContinuousScan(model) && !model.DepartmentCode.Equals("射出課"))
+                {
+                    this.textBox8.Text = "";
+                    this.textBox8.Focus();
+                    MessageBox.Show("請依實際生產狀況掃描，不允許連續掃描", "錯誤", MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation);
+                    return;
+                }
 
-                //得到批量掃描信息
-                bool IsBatchScan = this.checkBox1.Checked;
+                
 
 
 
@@ -432,7 +455,7 @@ namespace CPSscan
                             }
                         }
 
-                        this.Refresh();        //刷新窗體
+                        this.Refresh();        //刷新窗體    為什麼要刷新窗體？
 
 
                         if (!IsBatchScan)        //未批量掃描時,才有此箱未完成的情況
@@ -460,6 +483,8 @@ namespace CPSscan
                 bll = null;
             }
         }
+
+        
 
         private void SaveItemNoInfo(bool mark)
         {
@@ -655,10 +680,10 @@ namespace CPSscan
         {
             //確定是否要打印外箱貼紙
 
-            //得到工單和工號的完工量
-            //long finishedAmount = this.GetFinishedAmount(model.WorkOrder.Trim(),model.WorkNo.Trim());
-            //用此完工量除以每箱個數,得到餘數,當餘數為0時,則進行打印一張外箱貼紙,這個方法只針對每箱個數固定不變時才方便,但現在每箱個數會變,用此方法不方便.
-
+            //得到工單完工量和工單數量
+            int finishedAmount = this.GetFinishedAmount(this.textBox2.Text.Trim());
+            int WorkOrderNum = int.Parse(this.textBox5.Text.Trim());
+            int perBoxNum = int.Parse(this.textBox1.Text.Trim());
 
             //現改用前臺界面上直接計數
             if (int.Parse(this.label16.Text.Trim()) >= int.Parse(this.textBox1.Text.Trim()))
@@ -670,8 +695,17 @@ namespace CPSscan
                 if (this.checkBox1.Checked)
                 {
                     //批量掃描
-                    printAmount = int.Parse(this.textBox1.Text.Trim());    //直接打印每箱個數的值
-                }
+                    //printAmount = int.Parse(this.textBox1.Text.Trim());    //直接打印每箱個數的值
+                    //打印每箱個數的值，增加尾數箱數判斷   Simon 2019.01.22 add
+                    if ((finishedAmount + perBoxNum) > WorkOrderNum)
+                    {
+                        printAmount = WorkOrderNum - finishedAmount;
+                    }
+                    else
+                    {
+                        printAmount = perBoxNum;
+                    }                        
+                }                               
                 else
                 {
                     //非批量掃描
@@ -802,7 +836,6 @@ namespace CPSscan
                 MessageBox.Show("打印外箱貼紙失敗,請檢查各項數據是否正確", "信息", MessageBoxButtons.OK,
                        MessageBoxIcon.Exclamation);
             }
-
             return ret_v;
 
         }
@@ -873,17 +906,16 @@ namespace CPSscan
             }
         }
 
-        #region
-        /*
+       
         private bool JudgeWOComplete()
         {
             //判斷工單是否掃描完工            
 
             //得到當前工單已掃描完工量            
-            long finishedAmount = this.GetFinishedAmount(this.textBox2.Text.Trim());
+            int finishedAmount = this.GetFinishedAmount(this.textBox2.Text.Trim());
             
             //當前工單總數量            
-            long totalAmount = long.Parse(this.textBox5.Text.Trim());
+            int totalAmount = int.Parse(this.textBox5.Text.Trim());
 
             
             if (finishedAmount >= totalAmount)       //已掃描的完工量大於總數量,則不能掃描       
@@ -897,8 +929,6 @@ namespace CPSscan
                 return true;      //未掃描完工,返回true
             }            
         }
-        */
-        #endregion
 
         private bool JudgetAmountPerBox()        //判斷每箱數量是否合法
         {
@@ -981,19 +1011,17 @@ namespace CPSscan
 
         }
 
-        #region
-        /*
-        private long GetFinishedAmount(string workorder)
+        
+        
+        private int GetFinishedAmount(string workorder)
         {
             //通過工單得到已掃描數量
             BLL.BCScanned bll = new BLL.BCScanned();
-            long finishedAmount = bll.FinishedAmount(workorder.Trim());
+            int finishedAmount = bll.FinishedAmount(workorder.Trim());
             bll = null;
 
             return finishedAmount;
         }   
-        */
-        #endregion
 
         private void SetLastAmountPerBox()
         {
@@ -1021,7 +1049,10 @@ namespace CPSscan
 
             string lastAmountPerBox = bll.GetLastAmountPerBox(model);
 
-            this.textBox1.Text = lastAmountPerBox.Trim();
+            if (!string.IsNullOrEmpty(lastAmountPerBox))
+            {
+                this.textBox1.Text = lastAmountPerBox.Trim();
+            }
 
             bll = null;
             model = null;
@@ -1088,8 +1119,7 @@ namespace CPSscan
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.comboBox1.Text.Trim() == "")
-            {
-                this.textBox1.Text = "";
+            {           
                 this.label16.Text = "";
                 return;
             }
@@ -1162,10 +1192,16 @@ namespace CPSscan
             //禁用上面的已填寫好的信息控件
             this.DisableActiveControls(true);
 
-
+            if (checkBox1.Checked)
+            {
+                button3.Enabled = false;
+            }
+            else
+            {
+                button3.Enabled = true;
+            }
 
             this.button2.Enabled = true;
-            this.button3.Enabled = true;
             this.textBox8.Enabled = true;
 
             this.button1.Enabled = false;
@@ -1391,6 +1427,18 @@ namespace CPSscan
         private void textBox11_Leave(object sender, EventArgs e)
         {
             FormsVar.mainfm.statusStrip1.Items[0].Text = "";
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                button3.Enabled = false;
+            }
+            else
+            {
+                button3.Enabled = true;
+            }
         }
     }
 }

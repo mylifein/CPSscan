@@ -23,7 +23,13 @@ namespace Model
         private string _repositoryid;
         private string _attribute7;
         private string _ndescription;
+        private string _isBatchScan;
 
+        public string IsBatchScan
+        {
+            get { return _isBatchScan; }
+            set { _isBatchScan = value; }
+        }
 
         public string WorkOrder
         {

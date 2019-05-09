@@ -12,8 +12,18 @@ namespace CPSscan
     public partial class ContainerNumSet : Form
     {
         string loginedid;
+        string model;
+        string department;
+        public string num;
         public ContainerNumSet()
         {
+            InitializeComponent();
+        }
+
+        public ContainerNumSet(string model, string department)
+        {
+            this.model = model;
+            this.department = department;
             InitializeComponent();
         }
 
@@ -25,7 +35,15 @@ namespace CPSscan
 
         private void ContainerNumSet_Load(object sender, EventArgs e)
         {
-            this.textBox1.Text = getUserDepartment(loginedid);
+            if (!string.IsNullOrEmpty(loginedid))
+            {
+                this.textBox1.Text = getUserDepartment(loginedid);
+            }
+            else if (!string.IsNullOrEmpty(model))
+            {
+                this.textBox1.Text = department;
+                this.textBox2.Text = model;
+            }
         }
 
         private string getUserDepartment(string loginedid)
@@ -39,8 +57,10 @@ namespace CPSscan
             BLL.ContainerNumSet bll = new BLL.ContainerNumSet();
             string dept = textBox1.Text;
             string model = textBox2.Text;
-            string num = textBox3.Text;
+            this.num = textBox3.Text;
             bll.save(dept, model, num);
+
+            this.DialogResult = DialogResult.OK;
         }
 
         private void button2_Click(object sender, EventArgs e)

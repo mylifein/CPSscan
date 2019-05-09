@@ -111,7 +111,7 @@ namespace DAL
             }
             else
             {
-                return "";
+                return "0";
             }
         }
     }

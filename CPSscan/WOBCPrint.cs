@@ -14,6 +14,8 @@ namespace CPSscan
 {
     public partial class WOBCPrint : Form
     {
+        String status = "";
+        String description = "";
         public WOBCPrint()
         {
             InitializeComponent();
@@ -62,6 +64,7 @@ namespace CPSscan
             {
                 BLL.WorkOrderBC bll = new BLL.WorkOrderBC();
                 DataSet myds = bll.GetWorkOrderInfo(workorder);
+             
 
                 if ((myds != null) && (myds.Tables.Count == 2) && (myds.Tables[0].Rows.Count > 0))
                 {
@@ -104,6 +107,11 @@ namespace CPSscan
                     this.textBox11.Text =
                       (myds.Tables[0].Rows[0]["NDESCRIPTION"] == DBNull.Value ? "" :
                       Auxiliary.GetStringByBytes(myds.Tables[0].Rows[0]["NDESCRIPTION"].ToString().Trim(),43));                //品名,取43字節長度的字符串
+                    status = (myds.Tables[0].Rows[0]["STATUS_TYPE"] == DBNull.Value ? "" :
+                      myds.Tables[0].Rows[0]["STATUS_TYPE"].ToString().Trim());
+                    description = (myds.Tables[0].Rows[0]["STATUS_TYPE_DISP"] == DBNull.Value ? "" :
+                      myds.Tables[0].Rows[0]["STATUS_TYPE_DISP"].ToString().Trim());
+
                 }
                 else
                 {
@@ -154,6 +162,15 @@ namespace CPSscan
             {
                 MessageBox.Show("不能打印工單條碼,因為工單 料號 數量 部門ID都不允許為空", "提示", 
                     MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                this.textBox4.Focus();
+                return;
+            }
+            //判断工单状态提示相应信息
+            if(!status.Equals("3"))
+            {
+                string message = "工單狀態為  '" + description + "'  請聯係現場物料員或生管處理";
+                MessageBox.Show(message, "提示",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.textBox4.Focus();
                 return;
             }

@@ -186,15 +186,26 @@ namespace CPSscan
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
+            
+
             //檢查條碼是否是用掃描槍輸入
             if (!this.CheckInput())
             {
                 return;
             }
 
-
             if (e.KeyValue == 13)    //如果輸入的是回車鍵就執行相關的動作
             {
+
+                //檢查條碼是否是用掃描槍輸入
+                if (MainFm.checkBAControl())
+                {
+                    this.textBox1.Clear();
+                    MessageBox.Show("月結期間，入庫功能停用", "信息", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    return;
+                }
+
                 string barcode = "";
 
                 if (this.textBox1.Text.Trim() == "")

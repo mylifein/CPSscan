@@ -19,5 +19,7 @@ namespace CPSscan
         public static PauseReason pausereason;
         public static ModifyRepository modifyrepository;
         public static ContainerNumSet containerNumSet;
+        public static BarcodeScrapForm barcodeScrapForm;
+        public static BAControl baControl;
     }
 }

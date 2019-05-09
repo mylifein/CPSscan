@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BAControl.cs" />
     <Compile Include="BCScanned.cs" />
     <Compile Include="ContainerNumSet.cs" />
     <Compile Include="DepartmentID.cs" />

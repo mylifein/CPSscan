@@ -21,10 +21,10 @@ namespace DAL
 
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into BCScanned(WorkOrder,Segment,StartQuantity,DepartmentID,DepartmentCode,LineID,LineCode,");
-            strSql.Append("IPQC,CurrentTime,AmountPerBox,BarCode,WorkNo,SaveTime,RepositoryID,Attribute7,NDescription) ");
+            strSql.Append("IPQC,CurrentTime,AmountPerBox,BarCode,WorkNo,SaveTime,RepositoryID,Attribute7,NDescription,IsBatchScan) ");
             strSql.Append(" values(@WorkOrder,@Segment,@StartQuantity,@DepartmentID,@DepartmentCode,@LineID,@LineCode,@IPQC,");
             strSql.Append("convert(varchar(100),getdate(),120),@AmountPerBox,@BarCode,@WorkNo,convert(varchar(100),getdate(),120),");
-            strSql.Append("@RepositoryID,@Attribute7,@NDescription)");
+            strSql.Append("@RepositoryID,@Attribute7,@NDescription,@IsBatchScan)");
 
             SqlParameter[] parameters = {					
                                             new SqlParameter("@WorkOrder", SqlDbType.VarChar,900),					
@@ -40,7 +40,8 @@ namespace DAL
                                             new SqlParameter("@WorkNo", SqlDbType.VarChar,2000),
                                             new SqlParameter("@RepositoryID", SqlDbType.VarChar,800),
                                             new SqlParameter("@Attribute7",SqlDbType.VarChar,2000),
-                                            new SqlParameter("@NDescription",SqlDbType.VarChar,2000)
+                                            new SqlParameter("@NDescription",SqlDbType.VarChar,2000),
+                                            new SqlParameter("@IsBatchScan",SqlDbType.VarChar,50)
                                         };
 
 
@@ -58,6 +59,7 @@ namespace DAL
             parameters[11].Value = model.RepositoryID.Trim();
             parameters[12].Value = model.Attribute7.Trim();
             parameters[13].Value = model.NDescription.Trim();
+            parameters[14].Value = model.IsBatchScan.Trim();
 
 
 
@@ -76,7 +78,7 @@ namespace DAL
         }
 
         /// <summary>
-        /// 通過工單,課別ID,線別ID,工號得到最后一條記錄的時間CurrentTime
+        /// 通過工單,課別ID,料號得到最后一條記錄的時間CurrentTime
         /// </summary>
         public string GetLastTime(Model.BCScanned model)
         {
@@ -106,6 +108,33 @@ namespace DAL
             else
             {
                 return "";
+            }
+        }
+
+        public long getScanTimeDiff(Model.BCScanned model)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("SELECT  (DATEDIFF(SECOND,MAX(CurrentTime),GETDATE()) - AmountPerBox*0.36) AVGTIMEDIFF FROM BCScanned ");
+            strSql.Append("WHERE DepartmentID=@DepartmentID AND WorkOrder=@WorkOrder AND Segment=@Segment ");
+            strSql.Append("GROUP BY AmountPerBox*0.36");
+            SqlParameter[] parameters = {	                                         
+                                            new SqlParameter("@DepartmentID", SqlDbType.Int),
+                                            new SqlParameter("@WorkOrder", SqlDbType.VarChar,100),
+			                                new SqlParameter("@Segment", SqlDbType.VarChar,200)
+                                        };
+            parameters[0].Value = model.DepartmentID;
+            parameters[1].Value = model.WorkOrder.Trim();
+            parameters[2].Value = model.Segment.Trim();
+            object ret_v = SQLHelper.ExecuteScalar(SQLHelper.ConnectionString,
+                CommandType.Text, strSql.ToString(), parameters);                         //得到第1行第1列的值
+            if ((ret_v != null) && (ret_v != DBNull.Value))
+            {
+                string value = ret_v.ToString().Trim();
+                return  (Int64) (float.Parse(value));
+            }
+            else
+            {
+                return 0;
             }
         }
 
@@ -148,10 +177,10 @@ namespace DAL
         /// <summary>
         /// 通過工單查詢已掃描了多少
         /// </summary>        
-        public long FinishedAmount(string workorder)
+        public int FinishedAmount(string workorder)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select count(1) from bcscanned where workorder=@WorkOrder");
+            strSql.Append("select ISNULL(SUM(CurrentBoxAmount),0) from OuterBarCode where workorder=@WorkOrder");
 
             SqlParameter[] parameters = {	                                           
                                             new SqlParameter("@WorkOrder", SqlDbType.VarChar,900)			                                
@@ -165,7 +194,7 @@ namespace DAL
 
             if ((ret_v != null) && (ret_v != DBNull.Value) && (ret_v.ToString().Trim()!=""))
             {
-                return long.Parse(ret_v.ToString().Trim());
+                return int.Parse(ret_v.ToString().Trim());
             }
             else
             {
@@ -207,5 +236,7 @@ namespace DAL
 
         }
         */
+
+       
     }
 }

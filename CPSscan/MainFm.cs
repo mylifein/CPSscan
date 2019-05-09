@@ -235,6 +235,10 @@ namespace CPSscan
             {
                 //取消退出
                 e.Cancel = true;
+               
+            }
+            else
+            {
                 BCPrint bcprint = BCPrint.getInstance();
                 bcprint.close();
             }
@@ -292,15 +296,27 @@ namespace CPSscan
 
         private void InStoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if ((FormsVar.instore == null) || (FormsVar.instore.IsDisposed))
+            if (!checkBAControl())
             {
-                FormsVar.instore = new InStore();
+                if ((FormsVar.instore == null) || (FormsVar.instore.IsDisposed))
+                {
+                    FormsVar.instore = new InStore();
+                }
+
+                FormsVar.instore.MdiParent = this;
+                FormsVar.instore.Show();
+                FormsVar.instore.Activate();
             }
+            else
+            {
+                MessageBox.Show("月結期間，入庫功能停用", "信息", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
 
-            FormsVar.instore.MdiParent = this;
-
-            FormsVar.instore.Show();
-            FormsVar.instore.Activate();
+        public static bool checkBAControl()
+        {
+            BLL.BAControl bll = new BLL.BAControl();
+            return bll.checkBAControl();
         }
 
         private void InStoreToolStripMenuItem_MouseEnter(object sender, EventArgs e)
@@ -381,6 +397,23 @@ namespace CPSscan
             FormsVar.containerNumSet.MdiParent = this;
             FormsVar.containerNumSet.Show();
             FormsVar.containerNumSet.Activate();
+        }
+
+        private void BarcodeScrapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("系統開發中，請等待。。。");
+        }
+
+        private void BAControlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((FormsVar.baControl == null) || (FormsVar.baControl.IsDisposed))
+            {
+                FormsVar.baControl = new BAControl();
+            }
+
+            FormsVar.baControl.MdiParent = this;
+            FormsVar.baControl.Show();
+            FormsVar.baControl.Activate();
         }
     }
 }

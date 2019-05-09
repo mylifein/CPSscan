@@ -105,7 +105,7 @@ namespace CPSscan
         {
             if (e.KeyValue == 13)
             {
-                button2_Click(new object(), new EventArgs());
+                textBox2.Focus();
             }
         }
 

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using LabelManager2;
+using System.Diagnostics;
+using System.Drawing.Printing;
+using System.Windows.Forms;
 
 
 namespace CPSscan.Common
@@ -11,6 +14,13 @@ namespace CPSscan.Common
     {
         ApplicationClass lbl;
         static BCPrint instance;
+        private static PrintDocument fPrintDocument = new PrintDocument();
+
+        //获取本机默认打印机名称
+        public static String DefaultPrinter()
+        {
+            return fPrintDocument.PrinterSettings.PrinterName;
+        }
 
         public BCPrint()
         {
@@ -29,6 +39,25 @@ namespace CPSscan.Common
             if (lbl != null)
             {
                 lbl.Quit();
+            }
+            killProcess();
+
+        }
+
+        void killProcess()
+        {
+            Process[] pro = Process.GetProcesses();//获取已开启的所有进程
+
+            //遍历所有查找到的进程
+            
+            for (int i = 0; i < pro.Length; i++)
+            {
+                
+                //判断此进程是否是要查找的进程
+                if (pro[i].ProcessName.ToString().ToLower() == "lppa")
+                {
+                    pro[i].Kill();//结束进程
+                }
             }
         }
 
@@ -69,12 +98,13 @@ namespace CPSscan.Common
 
         public bool PrintBC(string templateFileName, string[] BCArray)
         {
-            if (lbl.Documents.Count == 0)
-            {
+            //未加載模板文件或者模板發生變更時，重新加載新的模板
+            if (lbl.Documents.Count == 0 || templateFileName.IndexOf(lbl.ActiveDocument.Name) == -1 ) 
+            {                               
                 lbl.Documents.Open(templateFileName, false);// 调用设计好的label文件
-            }
-            Document doc = lbl.ActiveDocument; ;
 
+            }
+            Document doc = lbl.ActiveDocument;
             try
             { 
                 doc.Variables.FormVariables.Item("Var0").Value = BCArray[0].Trim();   //给参数传值             可以不傳參數
@@ -107,6 +137,7 @@ namespace CPSscan.Common
 
 
                 int Num = 1;                      //打印数量
+                doc.Printer.SwitchTo(DefaultPrinter()); 
                 doc.PrintLabel(1, 1, 1, Num, 1, "");
                 //doc.PrintDocument(Num);           //打印               
 

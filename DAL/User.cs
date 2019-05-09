@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using DBUtility;
+using System.DirectoryServices;
 
 namespace DAL
 {
@@ -37,8 +38,48 @@ namespace DAL
             }
             else
             {
+                strSql = new StringBuilder();
+                strSql.Append("select count(1) from users ");
+                strSql.Append(" where loginid=@LoginID");                      //結果只會是0和大於0的正整數
+
+                SqlParameter[]  parameters2 = { new SqlParameter("@LoginID", SqlDbType.VarChar, 100) };
+
+                parameters2[0].Value = loginid.Trim();
+
+                rows = int.Parse(SQLHelper.ExecuteScalar(SQLHelper.ConnectionString, CommandType.Text, strSql.ToString(), parameters2).ToString().Trim());
+                if (rows > 0)
+                {
+                    return ADLogin(loginid, password);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        //使用AD帳號登錄
+        private bool ADLogin(string userName, string password)
+        {
+            string domain = "LDAP://172.22.81.2/DC=CHENBRO,DC=COM,DC=SH";            
+            try
+            {
+                DirectoryEntry entry = new DirectoryEntry(domain, userName, password);
+                object obj = entry.NativeObject;
+                DirectorySearcher search = new DirectorySearcher(entry);
+                search.Filter = string.Format("(SAMAccountName={0})", userName);
+                search.PropertiesToLoad.Add("cn");
+                SearchResult result = search.FindOne();
+                if (result == null)
+                    return false;
+            }
+            catch (Exception ex)
+            {
                 return false;
             }
+ 
+            return true;
+
         }
 
         /// <summary>
