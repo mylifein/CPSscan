@@ -562,7 +562,7 @@ namespace CPSscan
 
 
                 TimeSpan ts = tempdt.Subtract(_dt);     //兩個時間相減
-                if (ts.Milliseconds > 50)
+                if (ts.Milliseconds > 500)
                 {
 
                     MessageBox.Show("無效條碼,請用掃描槍輸入", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1427,6 +1427,16 @@ namespace CPSscan
         private void textBox11_Leave(object sender, EventArgs e)
         {
             FormsVar.mainfm.statusStrip1.Items[0].Text = "";
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

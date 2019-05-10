@@ -128,6 +128,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(169, 23);
             this.textBox2.TabIndex = 3;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
             this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
@@ -254,6 +255,7 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(221, 25);
             this.textBox8.TabIndex = 3;
+            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             this.textBox8.Enter += new System.EventHandler(this.textBox8_Enter);
             this.textBox8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox8_KeyDown);
             this.textBox8.Leave += new System.EventHandler(this.textBox8_Leave);

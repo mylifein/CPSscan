@@ -512,7 +512,7 @@ namespace CPSscan
 
 
                 TimeSpan ts = tempdt.Subtract(_dt);     //兩個時間相減
-                if (ts.Milliseconds > 50)
+                if (ts.Milliseconds > 500)
                 {
 
                     MessageBox.Show("無效條碼,請用掃描槍輸入", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
