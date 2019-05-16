@@ -42,6 +42,30 @@ namespace CPSscan
             this.label2.Enabled = false;
             this.textBox2.Enabled = false;
             this.radioButton1.Checked = true;
+
+            DataTable itemTable = new DataTable();   // construct selects value
+            DataColumn column;
+            DataRow row;
+            column = new DataColumn("Name");
+            itemTable.Columns.Add(column);
+            column = new DataColumn("Value");
+            itemTable.Columns.Add(column);
+            row = itemTable.NewRow();
+            row["Name"] = "全部";
+            row["Value"] = "1";
+            itemTable.Rows.Add(row);
+            row = itemTable.NewRow();
+            row["Name"] = "已入庫";
+            row["Value"] = "2";
+            itemTable.Rows.Add(row);
+            row = itemTable.NewRow();
+            row["Name"] = "未入庫";
+            row["Value"] = "3";
+            itemTable.Rows.Add(row);
+            this.comboBox1.DisplayMember = "Name";
+            this.comboBox1.ValueMember = "Value";
+            this.comboBox1.DataSource = itemTable;
+
         }
 
         private void RepeatPrtOuterBC_Shown(object sender, EventArgs e)
@@ -65,7 +89,7 @@ namespace CPSscan
 
         private void QueryBCInfo()          //查詢已打印的歷史貼紙信息
         {
-
+            string itemValue = this.comboBox1.SelectedValue.ToString();  //獲取查看條件
             dgv_ClickedRowIndex = -1;         //每次查詢之前將此變量賦初值-1
             dgv_DoubleClickedRowIndex = -1;   //每次查詢之前將此變量賦初值-1
 
@@ -108,7 +132,7 @@ namespace CPSscan
 
             if (this.radioButton1.Checked)
             {
-                ds = bll.GetList(workorder);
+                ds = bll.GetConditionList(workorder, itemValue);
             }
 
 
@@ -392,6 +416,16 @@ namespace CPSscan
             //this.button2_Click(new object(), new EventArgs());   //不是很正規
             //this.button2_Click(null, null);                      //不是很正規
             //對於按鈕的單擊事件,共有3種寫法,注意.
+        }
+
+        private void comboBox1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_DataSourceChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

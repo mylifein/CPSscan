@@ -30,11 +30,19 @@ namespace BLL
         */
 
         /// <summary>
-        /// 得到一批数据,根據工單
+        /// 得到一批数据,根據工單   用於工單作廢列表的查詢
         /// </summary>
         public DataSet GetList(string workorder)
         {
             return dal.GetList(workorder);
+        }
+
+        /// <summary>
+        /// 得到一批数据,根據工單   用於工單作廢列表的查詢
+        /// </summary>
+        public DataSet GetConditionList(string workorder,string select)
+        {
+            return dal.GetConditionList(workorder,select);
         }
 
         /// <summary>

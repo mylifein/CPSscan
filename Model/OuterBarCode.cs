@@ -22,6 +22,7 @@ namespace Model
         private string _attribute7;
         private string _ndescription;
         private int _cartonno;
+        private string _flag;
 
 
         public string WorkOrder
@@ -113,5 +114,12 @@ namespace Model
             set { _cartonno = value; }
             get { return _cartonno; }        
         }
+
+        public string Flag
+        {
+            set { _flag= value; }
+            get { return _flag; }
+        }
+
     }
 }

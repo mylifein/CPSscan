@@ -271,6 +271,10 @@
       <Project>{CC6CA0A1-3D43-4AE1-8E43-0759B1FA8275}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
+      <Project>{71B0D289-2B65-4567-A77D-41A0428E1B47}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{8EB845B5-BED8-4B81-89CD-EEE41D8F12C7}</Project>
       <Name>Model</Name>

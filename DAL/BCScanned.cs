@@ -180,7 +180,7 @@ namespace DAL
         public int FinishedAmount(string workorder)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select ISNULL(SUM(CurrentBoxAmount),0) from OuterBarCode where workorder=@WorkOrder");
+            strSql.Append("select ISNULL(SUM(CurrentBoxAmount),0) from OuterBarCode where workorder=@WorkOrder AND (Flag <> 1 OR FLAG IS NULL)");
 
             SqlParameter[] parameters = {	                                           
                                             new SqlParameter("@WorkOrder", SqlDbType.VarChar,900)			                                

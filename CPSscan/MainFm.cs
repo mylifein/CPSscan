@@ -401,7 +401,16 @@ namespace CPSscan
 
         private void BarcodeScrapToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("系統開發中，請等待。。。");
+            //MessageBox.Show("系統開發中，請等待。。。");
+            if ((FormsVar.barcodeScrapForm == null) || (FormsVar.barcodeScrapForm.IsDisposed))
+            {
+                FormsVar.barcodeScrapForm = new BarcodeScrapForm();
+            }
+
+            FormsVar.barcodeScrapForm.MdiParent = this;
+
+            FormsVar.barcodeScrapForm.Show();
+            FormsVar.barcodeScrapForm.Activate();
         }
 
         private void BAControlToolStripMenuItem_Click(object sender, EventArgs e)

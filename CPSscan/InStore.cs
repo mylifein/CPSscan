@@ -136,6 +136,12 @@ namespace CPSscan
                 this.label15.Text = model.CurrentBoxTime.ToString("yyyy-MM-dd HH:mm:ss").Trim();   //當前箱上的日期時間
                 this.label19.Text = model.WorkNo.Trim();                        //工單掃描人員
                 this.label30.Text = model.RepositoryID.Trim();                  //倉庫
+                if (model.Flag.Trim().Equals("1"))
+                {
+                    MessageBox.Show("條碼已經作廢不能入庫", "信息", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    return false;
+                }
                 return true;
             }
         }
@@ -475,6 +481,11 @@ namespace CPSscan
 
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         /*
         public bool CheckInfo()
         {
@@ -493,7 +504,7 @@ namespace CPSscan
             }
             #endregion
         }
-         */ 
+         */
 
         public bool CheckInput()                                          //判斷兩次按鍵間的時間間隔,從而判斷是掃描槍輸入還是鍵盤輸入
         {

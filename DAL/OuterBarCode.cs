@@ -115,16 +115,14 @@ namespace DAL
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select WorkOrder,DeptLineCode,Segment,RepositoryID,CurrentBoxAmount,IPQC,");                             //用@變量來代替加(+)變量就做到了SQL注入防範,用加(+)變量的方式不安全或導致SQL語句發生錯誤.即在變量的位置不要用加號(+).
             strSql.Append("convert(varchar(100),CurrentBoxTime,120) 'CurrentBoxTime',BarCode,WorkNo,Attribute7,NDescription,");
-            strSql.Append("CartonNO from OuterBarCode where workorder=@WorkOrder order by CurrentBoxTime asc");
+            strSql.Append("CartonNO from OuterBarCode where workorder=@WorkOrder AND (Flag <> 1 OR FLAG IS NULL) AND BarCode NOT IN (select BarCode FROM InStore where InStore.WorkOrder = @WorkOrder)  order by CurrentBoxTime asc");
 
             SqlParameter[] parameters = {                                            
-                                            new SqlParameter("@WorkOrder", SqlDbType.VarChar,900)                                                                                       
+                                            new SqlParameter("@WorkOrder", SqlDbType.VarChar,900)
                                         };
 
             parameters[0].Value = workorder.Trim();
-            
-
-
+          
 
             //SQL Bit類型對應ADO.NET的 bool類型           
 
@@ -132,6 +130,60 @@ namespace DAL
             DataSet ds = SQLHelper.ExecuteDataset(SQLHelper.ConnectionString, CommandType.Text, strSql.ToString(), parameters);
 
 
+            return ds;
+
+        }
+
+        /// <summary>
+        /// 得到一批数据,根據工單和查詢條件   用於條碼重列印功能
+        /// </summary>
+        public DataSet GetConditionList(string workorder,string selectItem)
+        {
+            StringBuilder strSql = new StringBuilder();
+            DataSet ds = new DataSet();
+            switch (selectItem)
+            {
+                case "1" :
+                    strSql.Append("select WorkOrder,DeptLineCode,Segment,RepositoryID,CurrentBoxAmount,IPQC,");                             //用@變量來代替加(+)變量就做到了SQL注入防範,用加(+)變量的方式不安全或導致SQL語句發生錯誤.即在變量的位置不要用加號(+).
+                    strSql.Append("convert(varchar(100),CurrentBoxTime,120) 'CurrentBoxTime',BarCode,WorkNo,Attribute7,NDescription,");
+                    strSql.Append("CartonNO from OuterBarCode where workorder=@WorkOrder AND (Flag <> 1 OR FLAG IS NULL) order by CurrentBoxTime asc");
+
+                    SqlParameter[] parameters = {
+                                            new SqlParameter("@WorkOrder", SqlDbType.VarChar,900)
+                                        };
+                    parameters[0].Value = workorder.Trim();
+
+                    //SQL Bit類型對應ADO.NET的 bool類型           
+                    ds = SQLHelper.ExecuteDataset(SQLHelper.ConnectionString, CommandType.Text, strSql.ToString(), parameters);
+                    break;
+         
+                case "2" :
+                    strSql.Append("select WorkOrder,DeptLineCode,Segment,RepositoryID,CurrentBoxAmount,IPQC,");                             //用@變量來代替加(+)變量就做到了SQL注入防範,用加(+)變量的方式不安全或導致SQL語句發生錯誤.即在變量的位置不要用加號(+).
+                    strSql.Append("convert(varchar(100),CurrentBoxTime,120) 'CurrentBoxTime',BarCode,WorkNo,Attribute7,NDescription,");
+                    strSql.Append("CartonNO from OuterBarCode where workorder=@WorkOrder AND (Flag <> 1 OR FLAG IS NULL) AND BarCode IN (select BarCode FROM InStore where InStore.WorkOrder = @WorkOrder)   order by CurrentBoxTime asc");
+
+                    SqlParameter[] parameters1 = { new SqlParameter("@WorkOrder", SqlDbType.VarChar,900)};
+
+                    parameters1[0].Value = workorder.Trim();
+
+                    //SQL Bit類型對應ADO.NET的 bool類型           
+                    ds = SQLHelper.ExecuteDataset(SQLHelper.ConnectionString, CommandType.Text, strSql.ToString(), parameters1);
+                    break;
+                case "3" :
+                    strSql.Append("select WorkOrder,DeptLineCode,Segment,RepositoryID,CurrentBoxAmount,IPQC,");                             //用@變量來代替加(+)變量就做到了SQL注入防範,用加(+)變量的方式不安全或導致SQL語句發生錯誤.即在變量的位置不要用加號(+).
+                    strSql.Append("convert(varchar(100),CurrentBoxTime,120) 'CurrentBoxTime',BarCode,WorkNo,Attribute7,NDescription,");
+                    strSql.Append("CartonNO from OuterBarCode where workorder=@WorkOrder AND (Flag <> 1 OR FLAG IS NULL) AND BarCode NOT IN (select BarCode FROM InStore where InStore.WorkOrder = @WorkOrder)   order by CurrentBoxTime asc");
+
+                    SqlParameter[] parameters2 = { new SqlParameter("@WorkOrder", SqlDbType.VarChar, 900) };
+
+                    parameters2[0].Value = workorder.Trim();
+
+                    //SQL Bit類型對應ADO.NET的 bool類型           
+                    ds = SQLHelper.ExecuteDataset(SQLHelper.ConnectionString, CommandType.Text, strSql.ToString(), parameters2);
+                    break;
+
+            }
+          
             return ds;
 
         }
@@ -170,6 +222,7 @@ namespace DAL
                 model.CartonNO =
                     row["cartonno"] == DBNull.Value ? 0 : Convert.ToInt32(row["cartonno"].ToString().Trim());
 
+                model.Flag = row["flag"].ToString().Trim();
 
 
                 /*
@@ -216,7 +269,7 @@ namespace DAL
 
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select workorder,deptlinecode,segment,currentboxamount,ipqc,currentboxtime,");
-            strSql.Append("barcode,workno,repositoryid,attribute7,ndescription,cartonno from outerbarcode where barcode=@BarCode");
+            strSql.Append("barcode,workno,repositoryid,attribute7,ndescription,cartonno,flag from outerbarcode where barcode=@BarCode");
            
             
             
@@ -290,13 +343,14 @@ namespace DAL
 
         /// <summary>
         /// 得到一批数据,根據條碼
+        ///排除單據作廢的單據
         /// </summary>
         public DataSet GetListByBC(string barcode)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select WorkOrder,DeptLineCode,Segment,RepositoryID,CurrentBoxAmount,IPQC,");                             //用@變量來代替加(+)變量就做到了SQL注入防範,用加(+)變量的方式不安全或導致SQL語句發生錯誤.即在變量的位置不要用加號(+).
             strSql.Append("convert(varchar(100),CurrentBoxTime,120) 'CurrentBoxTime',BarCode,WorkNo,Attribute7,NDescription,");
-            strSql.Append("CartonNO from OuterBarCode where barcode=@BarCode order by CurrentBoxTime asc");
+            strSql.Append("CartonNO from OuterBarCode where barcode=@BarCode AND (Flag <> 1 OR FLAG IS NULL) order by CurrentBoxTime asc");
 
             SqlParameter[] parameters = {                                            
                                             new SqlParameter("@BarCode", SqlDbType.VarChar,2000)                                                                                       
