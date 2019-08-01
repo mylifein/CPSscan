@@ -344,13 +344,18 @@ namespace CPSscan
                 {
                     barcode = this.textBox8.Text.Trim();         //得到當前輸入條碼
                 }
-
+                if(this.textBox8.Text != this.textBox2.Text)
+                {
+                    MessageBox.Show("條碼掃描與工單號不一致,請確認掃描的工單是否正確！", "提示",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
 
                 //判斷必要的信息是否合法
                 if (!this.CheckInfo())
                 {
-                    this.textBox8.Text = "";
+                    this.textBox8.Text = "";               
                     this.textBox8.Focus();
                     return;
                 }

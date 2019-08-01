@@ -40,7 +40,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>G:\CPSscan\CPSscan\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -264,7 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{EC57BB68-C98F-47EE-80A9-78DA78262295}</Project>
+      <Project>{ec57bb68-c98f-47ee-80a9-78da78262295}</Project>
       <Name>BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -276,8 +276,9 @@
       <Name>DBUtility</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{8EB845B5-BED8-4B81-89CD-EEE41D8F12C7}</Project>
+      <Project>{8eb845b5-bed8-4b81-89cd-eee41d8f12c7}</Project>
       <Name>Model</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
     <ProjectReference Include="..\OAUS.Core\OAUS.Core.csproj">
       <Project>{E193FC6C-89D1-453B-96FD-192820E7798D}</Project>

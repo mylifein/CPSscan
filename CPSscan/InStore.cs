@@ -48,7 +48,7 @@ namespace CPSscan
 
         private void GetRepository()
         {
-            //加載Oracle DB中的所有倉庫
+            //加載Oracle DB中的所有倉庫仓别
 
             BLL.InStore bll = new BLL.InStore();
 
